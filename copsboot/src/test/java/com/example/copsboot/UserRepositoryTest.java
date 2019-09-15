@@ -1,37 +1,41 @@
 package com.example.copsboot;
 
-import com.example.copsboot.business.objects.domain.User;
-import com.example.copsboot.business.objects.domain.Users;
+import com.example.copsboot.business.objects.entities.User;
+import com.example.copsboot.business.objects.entities.Users;
 import com.example.copsboot.business.objects.enums.UserRole;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
+import com.example.orm.jpa.InMemoryUniqueIdGenerator;
+import com.example.orm.jpa.UniqueIdGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.UUID;
 
-@RunWith(SpringRunner.class)
 // You need to annotate the JUnit test class with @RunWith(SpringRunner.class) to enable the testing support of Spring Boot.
-@DataJpaTest
+@RunWith(SpringRunner.class)
 // @DataJpaTest instructs the testing support to start only the part of the application responsible for everything related to JPA.
+@DataJpaTest
 public class UserRepositoryTest {
 
-    // Inject the UserRepository so you can use it in the unit test
     @Autowired
     private UserRepository repository;
 
-    //	@TestConfiguration
-//	static class TestConfig {
-//		@Bean
-//		public UserRepository <UUID> generator(){
-//			return (UserRepository<UUID>) new InMemoryUniqueIdGenerator();
-//		}
-//	}
+    @TestConfiguration
+	static class TestConfig {
+		@Bean
+		public UniqueIdGenerator<UUID> generator(){
+			return new InMemoryUniqueIdGenerator();
+		}
+	}
     @Test
     public void testStoreUser() {
         HashSet<UserRole> roles = new HashSet<>();
@@ -63,7 +67,6 @@ public class UserRepositoryTest {
                         (Locale.US));
 
         Assert.assertTrue(result.isPresent());
-
     }
 
     @Test
@@ -74,5 +77,4 @@ public class UserRepositoryTest {
 
         Assert.assertFalse(result.isPresent());
     }
-
 }

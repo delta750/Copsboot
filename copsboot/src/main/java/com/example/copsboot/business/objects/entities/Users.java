@@ -1,4 +1,4 @@
-package com.example.copsboot.business.objects.domain;
+package com.example.copsboot.business.objects.entities;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.UUID;

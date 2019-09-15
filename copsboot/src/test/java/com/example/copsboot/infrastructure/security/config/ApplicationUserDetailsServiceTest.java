@@ -1,16 +1,14 @@
 package com.example.copsboot.infrastructure.security.config;
 
-import com.example.copsboot.business.objects.domain.Users;
+import com.example.copsboot.business.objects.entities.Users;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -54,4 +52,3 @@ public class ApplicationUserDetailsServiceTest {
 
 
     }
-}

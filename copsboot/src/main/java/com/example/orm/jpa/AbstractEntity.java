@@ -32,6 +32,7 @@ public abstract class AbstractEntity<T extends EntityId> implements Entity<T> {
     }
 
     public AbstractEntity(T id) {
+
         this.id = Objects.requireNonNull(id);
     }
 }

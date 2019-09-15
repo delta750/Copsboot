@@ -18,13 +18,14 @@ public abstract class AbstractEntityId <T extends Serializable> implements Seria
 
     private T id;
 
-    @ArtifactForFramework // is annotated with @ArtifactForFramework. Create this annotation to indicate that the constructor is solely there for a framework that needs it but is not intended to be used by the application itself.
+    // The empty constructor is annotated with @ArtifactForFramework.
+    // Create this annotation to indicate that the constructor is solely there for a framework that needs it but
+    // is not intended to be used by the application itself.
+    @ArtifactForFramework
     protected AbstractEntityId(){
-
     }
 
     protected AbstractEntityId(T id){
-
         this.id = Objects.requireNonNull(id);
     }
 
@@ -32,5 +33,4 @@ public abstract class AbstractEntityId <T extends Serializable> implements Seria
     public String asString() {
         return id.toString();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.copsboot.business.objects.domain;
+package com.example.copsboot.business.objects.entities;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

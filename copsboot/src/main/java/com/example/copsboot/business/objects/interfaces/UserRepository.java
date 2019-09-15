@@ -1,6 +1,6 @@
 package com.example.copsboot.business.objects.interfaces;
 
-import com.example.copsboot.business.objects.domain.User;
+import com.example.copsboot.business.objects.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

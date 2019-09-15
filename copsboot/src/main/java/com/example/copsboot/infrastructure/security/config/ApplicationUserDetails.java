@@ -1,7 +1,7 @@
 package com.example.copsboot.infrastructure.security.config;
 
-import com.example.copsboot.business.objects.domain.User;
-import com.example.copsboot.business.objects.domain.UserId;
+import com.example.copsboot.business.objects.entities.User;
+import com.example.copsboot.business.objects.entities.UserId;
 import com.example.copsboot.business.objects.enums.UserRole;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Collection;

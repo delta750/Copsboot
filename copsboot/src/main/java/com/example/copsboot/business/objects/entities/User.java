@@ -1,4 +1,4 @@
-package com.example.copsboot.business.objects.domain;
+package com.example.copsboot.business.objects.entities;
 
 import java.util.Set;
 import com.example.copsboot.business.objects.enums.UserRole;
@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 public class User extends AbstractEntity<UserId> {
 
     private String email;
+    private String name;
+    private String lastname;
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)

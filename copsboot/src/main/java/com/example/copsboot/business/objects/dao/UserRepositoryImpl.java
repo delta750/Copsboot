@@ -1,5 +1,6 @@
-package com.example.copsboot.business.objects.domain;
+package com.example.copsboot.business.objects.dao;
 
+import com.example.copsboot.business.objects.entities.UserId;
 import com.example.copsboot.business.objects.interfaces.UserRepositoryCustom;
 import com.example.orm.jpa.UniqueIdGenerator;
 import java.util.UUID;
@@ -11,7 +12,6 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     // You might want to get them from the database or maybe from some distributed component that can hand out unique IDs
     // across connected JVMs
     private final UniqueIdGenerator generator;
-
     public UserRepositoryImpl(UniqueIdGenerator <UUID> generator) {
         this.generator = generator;
     }

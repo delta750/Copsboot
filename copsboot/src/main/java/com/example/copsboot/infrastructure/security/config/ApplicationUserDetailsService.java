@@ -1,6 +1,6 @@
 package com.example.copsboot.infrastructure.security.config;
 
-import com.example.copsboot.business.objects.domain.User;
+import com.example.copsboot.business.objects.entities.User;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
