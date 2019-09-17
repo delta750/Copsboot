@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,19 +30,18 @@ public class UserRepositoryTest {
     private UserRepository repository;
 
     @TestConfiguration
-	static class TestConfig {
-		@Bean
-		public UniqueIdGenerator<UUID> generator(){
-			return new InMemoryUniqueIdGenerator();
-		}
-	}
+    static class TestConfig {
+        @Bean
+        public UniqueIdGenerator<UUID> generator() {
+            return new InMemoryUniqueIdGenerator();
+        }
+    }
+
     @Test
     public void testStoreUser() {
-        HashSet<UserRole> roles = new HashSet<>();
-        roles.add(UserRole.OFFICER);
         User user = repository.save(new User(repository.nextId(), "alex.foley@beverly-hills.com",
                 "my-secret-pwd",
-                roles));
+                Collections.singletonList(UserRole.OFFICER)));
 
         Assert.assertNotNull(user);
         Assert.assertEquals(1L, repository.count());

@@ -1,5 +1,8 @@
 package com.example.copsboot.business.objects.entities;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import com.example.copsboot.business.objects.enums.UserRole;
 import com.example.orm.jpa.AbstractEntity;
@@ -24,9 +27,9 @@ public class User extends AbstractEntity<UserId> {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @NotNull
-    private Set<UserRole> roles;
+    private List<UserRole> roles;
 
-    public User(UserId id, String email, String password, Set<UserRole> roles) {
+    public User(UserId id, String email, String password, List<UserRole> roles) {
         super(id);
         this.email = email;
         this.password = password;
@@ -34,4 +37,11 @@ public class User extends AbstractEntity<UserId> {
     }
 
 
+    public static User createOfficer(UserId id, String officerEmail, String password) {
+        return new User(id, officerEmail, password, Collections.singletonList(UserRole.OFFICER));
+    }
+
+    public static User createCaptain(UserId id, String captainEmail, String password) {
+        return new User(id, captainEmail, password, Collections.singletonList(UserRole.CAPTAIN));
+    }
 }

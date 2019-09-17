@@ -5,7 +5,7 @@ import com.example.copsboot.business.objects.entities.UserId;
 import com.example.copsboot.business.objects.enums.UserRole;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -25,7 +25,7 @@ public class ApplicationUserDetails extends org.springframework.security.core.us
         return userId;
     }
 
-    private static Collection<SimpleGrantedAuthority> createAuthorities(Set<UserRole> roles) {
+    private static Collection<SimpleGrantedAuthority> createAuthorities(List<UserRole> roles) {
 
         return roles.stream().map(userRole -> new SimpleGrantedAuthority(ROLE_PREFIX + userRole.name()))
                 .collect(Collectors.toSet());
