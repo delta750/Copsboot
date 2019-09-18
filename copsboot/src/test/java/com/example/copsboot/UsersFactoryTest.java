@@ -1,11 +1,13 @@
-package com.example.copsboot.business.objects.entities;
+package com.example.copsboot;
 
+import com.example.copsboot.business.objects.entities.User;
+import com.example.copsboot.business.objects.entities.UserId;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 
-public class Users {
+public class UsersFactoryTest {
     private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
     public static final String OFFICER_EMAIL = "officer@example.com";
@@ -41,7 +43,7 @@ public class Users {
         return CAPTAIN;
     }
 
-    private Users() {
+    private UsersFactoryTest() {
     }
 
 }

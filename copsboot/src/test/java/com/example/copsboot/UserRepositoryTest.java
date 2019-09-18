@@ -1,7 +1,6 @@
 package com.example.copsboot;
 
 import com.example.copsboot.business.objects.entities.User;
-import com.example.copsboot.business.objects.entities.Users;
 import com.example.copsboot.business.objects.enums.UserRole;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
 import com.example.orm.jpa.InMemoryUniqueIdGenerator;
@@ -49,7 +48,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByEmail() {
-        User user = Users.newRandomOfficer();
+        User user = UsersFactoryTest.newRandomOfficer();
 
         repository.save(user);
         Optional<User> result = repository.findByEmailIgnoreCase(user.getEmail());
@@ -59,7 +58,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByEmailIgnoringCase() {
-        User user = Users.newRandomOfficer();
+        User user = UsersFactoryTest.newRandomOfficer();
         repository.save(user);
         Optional<User> result = repository.findByEmailIgnoreCase(user.getEmail()
                 .toUpperCase
@@ -70,7 +69,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByEmail_unknownEmail() {
-        User user = Users.newRandomOfficer();
+        User user = UsersFactoryTest.newRandomOfficer();
         repository.save(user);
         Optional<User> result = repository.findByEmailIgnoreCase("will.not@find.me");
 
