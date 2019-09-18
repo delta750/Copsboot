@@ -1,15 +1,16 @@
 package com.example.copsboot.business.objects.entities;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
 import com.example.copsboot.business.objects.enums.UserRole;
 import com.example.orm.jpa.AbstractEntity;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter

@@ -1,6 +1,5 @@
 package com.example.orm.jpa;
 
-import java.io.Serializable;
 import com.example.util.ArtifactForFramework;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,7 +13,7 @@ import java.util.Objects;
 @EqualsAndHashCode
 @Getter
 @ToString
-public abstract class AbstractEntityId <T extends Serializable> implements Serializable, EntityId <T> {  // type T must implement Serializable
+public abstract class AbstractEntityId<T extends Serializable> implements Serializable, EntityId<T> {  // type T must implement Serializable
 
     private T id;
 
@@ -22,10 +21,10 @@ public abstract class AbstractEntityId <T extends Serializable> implements Seria
     // Create this annotation to indicate that the constructor is solely there for a framework that needs it but
     // is not intended to be used by the application itself.
     @ArtifactForFramework
-    protected AbstractEntityId(){
+    protected AbstractEntityId() {
     }
 
-    protected AbstractEntityId(T id){
+    protected AbstractEntityId(T id) {
         this.id = Objects.requireNonNull(id);
     }
 
