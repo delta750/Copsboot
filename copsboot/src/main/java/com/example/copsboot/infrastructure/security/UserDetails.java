@@ -1,4 +1,4 @@
-package com.example.copsboot.infrastructure.security.config;
+package com.example.copsboot.infrastructure.security;
 
 import com.example.copsboot.business.objects.entities.User;
 import com.example.copsboot.business.objects.entities.UserId;

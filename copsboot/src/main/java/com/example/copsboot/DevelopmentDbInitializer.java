@@ -9,20 +9,23 @@ import org.springframework.stereotype.Component;
 
 // Mark the class with @Component so the component scanning picks it up
 @Component
-@Profile("dev")
+@Profile(SpringProfiles.DEV)
 public class DevelopmentDbInitializer implements ApplicationRunner {
 
     private final UserDataService userService;
+
     @Autowired
     public DevelopmentDbInitializer(UserDataService userService) {
         this.userService = userService;
     }
+
     @Override
-    public void run(ApplicationArguments args){
+    public void run(ApplicationArguments args) {
         createTestUsers();
     }
 
     private void createTestUsers() {
-        userService.createOfficer( "officer@example.com", "password");
+        userService.createOfficer("officer@example.com", "password");
     }
+
 }

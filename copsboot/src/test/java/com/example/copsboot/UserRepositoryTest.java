@@ -38,7 +38,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testStoreUser() {
-        User user = repository.save(new User(repository.nextId(), "alex.foley@beverly-hills.com",
+        User user = repository.save(new User(repository.getId(), "alex.foley@beverly-hills.com",
                 "my-secret-pwd",
                 Collections.singletonList(UserRole.OFFICER)));
 

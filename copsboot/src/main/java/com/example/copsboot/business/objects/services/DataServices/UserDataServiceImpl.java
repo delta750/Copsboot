@@ -21,7 +21,7 @@ public class UserDataServiceImpl implements UserDataService {
 
     @Override
     public User createOfficer(String email, String password) {
-        User user = User.createOfficer(repository.nextId(), email, passwordEncoder.
+        User user = User.createOfficer(repository.getId(), email, passwordEncoder.
                 encode(password));
 
         return repository.save(user);

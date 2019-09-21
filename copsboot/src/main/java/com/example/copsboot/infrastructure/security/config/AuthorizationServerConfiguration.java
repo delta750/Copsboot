@@ -12,8 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
-import static com.example.copsboot.infrastructure.security.config.ResourceServerConfiguration.RESOURCE_ID;
-
 
 /*
  * The authorization server is responsible for the authorization of the client application and the users
@@ -64,15 +62,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient("copsboot-mobile-client") // hard-coded the client ID for authentication of the client application to copsboot-mobile-client
                 .authorizedGrantTypes("password", "refresh_token") // This has to be "password" to allow password flow using the defined client application. Also add "refresh_token" so that the client application can use the refresh token to get a new access token
                 .scopes("mobile_app") // The scopes allow you to define what "part" of the application is allowed by the received token. Let’s not do anything based on that value for now, so its exact value does not really matter
-                .resourceIds(RESOURCE_ID)
+                .resourceIds(ResourceServerConfiguration.RESOURCE_ID)
                 .secret(passwordEncoder.encode("ccUyb6vS4S8nxfbKPCrN")); // This defines the client secret to authenticate the client application.
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints){
         endpoints.tokenStore(tokenStore)
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
     }
-
 }

@@ -16,28 +16,6 @@ import java.util.UUID;
 
 @SpringBootApplication
 public class CopsbootApplication {
-
-	@Bean
-	public UniqueIdGenerator<UUID> uniqueIdGenerator() {
-		return new InMemoryUniqueIdGenerator();
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}@Bean
-
-	public AuthenticationManager authenticationManager() {
-		return new OAuth2AuthenticationManager();
-	}
-
-	@Bean
-	public TokenStore tokenStore() {
-		// We use the InMemoryTokenStore to get started. Later on, we will use the JdbcTokenStore to store the tokens
-		//in the database
-		return new InMemoryTokenStore();
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(CopsbootApplication.class, args);
 	}
