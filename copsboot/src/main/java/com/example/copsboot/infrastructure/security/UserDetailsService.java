@@ -4,10 +4,12 @@ import com.example.copsboot.business.objects.entities.User;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+@Component
 @Service // @Service tells Spring’s component scanning to create a singleton instance of this class
-public class UserDetailsService {
+public class UserDetailsService implements com.example.copsboot.business.objects.entities.UserDetailsService {
 
     private final UserRepository userRepository;
 

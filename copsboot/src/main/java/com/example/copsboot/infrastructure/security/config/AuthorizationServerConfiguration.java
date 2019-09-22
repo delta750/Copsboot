@@ -1,9 +1,10 @@
 package com.example.copsboot.infrastructure.security.config;
 
+import com.example.copsboot.business.objects.entities.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -40,6 +41,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     // The TokenStore is what Spring will use to store the generated access tokens
     @Autowired
     private TokenStore tokenStore;
+
+    @Autowired
+    private SecurityConfiguration securityConfiguration;
 
     /* You obviously should not store user passwords in plain text. This example uses an implementation
      * of PasswordEncoder to encrypt passwords when storing them in the database. PasswordEncoder hashes

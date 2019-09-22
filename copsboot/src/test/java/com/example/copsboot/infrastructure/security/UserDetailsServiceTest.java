@@ -1,4 +1,4 @@
-package com.example.copsboot.infrastructure.security.config;
+package com.example.copsboot.infrastructure.security;
 
 import com.example.copsboot.UsersFactoryTest;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
@@ -29,7 +29,8 @@ public class UserDetailsServiceTest {
         Assert.assertNotNull(userDetails);
 
         Assert.assertEquals(UsersFactoryTest.OFFICER_EMAIL, userDetails.getUsername());
-        Assert.assertEquals("ROLE_OFFICER", userDetails.getAuthorities().toString());
+
+        Assert.assertEquals("[ROLE_OFFICER]", userDetails.getAuthorities().toString());
 
 
 //        assertThat(userDetails).isInstanceOfSatisfying(UserDetails.class,
