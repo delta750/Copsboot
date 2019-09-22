@@ -24,26 +24,29 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     /*
      * UserDetailsService is the contact point between the application and Spring Security. You will have
      * to create a class that implements this interface, which will use the previously created
      * UserRepository to know what users you have in your application.
      */
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     // The TokenStore is what Spring will use to store the generated access tokens
-    @Autowired
-    private TokenStore tokenStore;
+    private final TokenStore tokenStore;
 
-    @Autowired
-    private SecurityConfiguration securityConfiguration;
+    private final SecurityConfiguration securityConfiguration;
+
+    public AuthorizationServerConfiguration(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, TokenStore tokenStore, SecurityConfiguration securityConfiguration) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenStore = tokenStore;
+        this.securityConfiguration = securityConfiguration;
+    }
 
     /* You obviously should not store user passwords in plain text. This example uses an implementation
      * of PasswordEncoder to encrypt passwords when storing them in the database. PasswordEncoder hashes
@@ -63,11 +66,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
          * the database if you want. You would then use clients.jdbc(dataSource).
          */
         clients.inMemory()
-                .withClient("copsboot-mobile-client") // hard-coded the client ID for authentication of the client application to copsboot-mobile-client
+                .withClient(securityConfiguration.getMobileAppClientId()) // hard-coded the client ID for authentication of the client application to copsboot-mobile-client
                 .authorizedGrantTypes("password", "refresh_token") // This has to be "password" to allow password flow using the defined client application. Also add "refresh_token" so that the client application can use the refresh token to get a new access token
                 .scopes("mobile_app") // The scopes allow you to define what "part" of the application is allowed by the received token. Let’s not do anything based on that value for now, so its exact value does not really matter
                 .resourceIds(ResourceServerConfiguration.RESOURCE_ID)
-                .secret(passwordEncoder.encode("ccUyb6vS4S8nxfbKPCrN")); // This defines the client secret to authenticate the client application.
+                .secret(passwordEncoder.encode(securityConfiguration.getMobileAppClientSecret())); // This defines the client secret to authenticate the client application.
     }
 
     @Override
