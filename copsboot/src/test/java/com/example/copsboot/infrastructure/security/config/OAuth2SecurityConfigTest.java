@@ -45,8 +45,8 @@ public class OAuth2SecurityConfigTest {
 
         userDataService.createOfficer(UsersFactoryTest.OFFICER_EMAIL, UsersFactoryTest.OFFICER_PASSWORD);
 
-        String clientId = "copsboot-mobile-client";
-        String clientSecret = "ccUyb6vS4S8nxfbKPCrN";
+        String clientId = "test-client-id";
+        String clientSecret = "test-client-secret";
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
