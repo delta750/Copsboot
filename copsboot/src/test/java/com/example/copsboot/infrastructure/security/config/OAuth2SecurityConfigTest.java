@@ -1,6 +1,5 @@
 package com.example.copsboot.infrastructure.security.config;
 
-import com.example.copsboot.DevelopmentDbInitializer;
 import com.example.copsboot.SpringProfiles;
 import com.example.copsboot.UsersFactoryTest;
 import com.example.copsboot.business.objects.services.DataServices.UserDataService;
@@ -16,7 +15,6 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

@@ -21,8 +21,6 @@ import java.util.List;
 public class User extends AbstractEntity<UserId> {
 
     private String email;
-    private String name;
-    private String lastname;
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)

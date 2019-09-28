@@ -19,7 +19,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Configuration
 @EnableResourceServer //  The @EnableResourceServer annotation ensures that you have a resource server.
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+public class OAuth2ServerConfiguration extends ResourceServerConfigurerAdapter {
 
     public static final String RESOURCE_ID = "copsboot";
 
@@ -34,9 +34,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // You define via the fluent API that any OPTIONS request to any sub-path of /api is allowed by everybody. This allows a client to issue a so-called "preflight request". This is something that the Angular framework, for example, does by default
                 .and()
                 .antMatcher("/api/**").authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/users/").permitAll()
                 .anyRequest()
                 .authenticated(); // This defines that any request to /api should be authenticated (unless it is an OPTIONS request)
     }
-
-
 }

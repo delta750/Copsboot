@@ -2,11 +2,13 @@ package com.example.copsboot;
 
 import com.example.copsboot.business.objects.entities.User;
 import com.example.copsboot.business.objects.entities.UserId;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 
+@NoArgsConstructor
 public class UsersFactoryTest {
     private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
@@ -43,7 +45,7 @@ public class UsersFactoryTest {
         return CAPTAIN;
     }
 
-    private UsersFactoryTest() {
+    public static User newOfficer(String email, String password) {
+        return User.createOfficer(newRandomId(), email, PASSWORD_ENCODER.encode(password));
     }
-
 }

@@ -1,10 +1,13 @@
 package com.example.copsboot.business.objects.services.DataServices;
 
 import com.example.copsboot.business.objects.entities.User;
+import com.example.copsboot.business.objects.entities.UserId;
 import com.example.copsboot.business.objects.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserDataServiceImpl implements UserDataService {
@@ -21,9 +24,12 @@ public class UserDataServiceImpl implements UserDataService {
 
     @Override
     public User createOfficer(String email, String password) {
-        User user = User.createOfficer(repository.getId(), email, passwordEncoder.
-                encode(password));
-
+        User user = User.createOfficer(repository.getId(), email, passwordEncoder.encode(password));
         return repository.save(user);
+    }
+
+    @Override
+    public Optional<User> getUser(UserId userId) {
+        return repository.findById(userId.getId());
     }
 }
